@@ -1,4 +1,15 @@
-Na początku, żeby zainstalować wszystkie biblioteki należy wpisać "npm install"
+# ![cover](/Chatbot.gif)
 
-Żeby wejść na plik trzeba wpisać w terminalu ścieżkę np. "cd ./tasks", "cd ./exampleTask".
-Kiedy znajdziemy się w odpowiednim folderze używamy metody "ts-node ./index.ts", żeby odpalić plik.
+
+
+# CHATBOT
+
+CHATBOT widget to easy implement on the any website.
+
+## Tool & technologies I've used
+
+- Visual Studio Code
+- SASS
+- TS
+
+### I built this program thanks to knowledge what I learn from fundamentals at [Localhoste Academy](https://academy.localhost-group.com/)
