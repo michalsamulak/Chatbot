@@ -107,7 +107,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setAttr = exports.addElemntsToContainer = exports.createElementWithManyClass = exports.createElementWithClass = void 0;
+exports.removeLoader = exports.loaderAnimation = exports.setAttr = exports.addElemntsToContainer = exports.createElementWithManyClass = exports.createElementWithClass = void 0;
 var createElementWithClass = function createElementWithClass(elementType, classesName) {
     var element = document.createElement(elementType);
     element.classList.add(classesName);
@@ -135,6 +135,22 @@ var setAttr = function setAttr(element, attributes, setContent) {
     if (setContent) element.innerHTML = setContent;
 };
 exports.setAttr = setAttr;
+var loaderAnimation = function loaderAnimation() {
+    var loader = createElementWithClass('div', 'loader');
+    var spanElA = document.createElement('span');
+    var spanElB = document.createElement('span');
+    var spanElC = document.createElement('span');
+    addElemntsToContainer(loader, [spanElA, spanElB, spanElC]);
+    return loader;
+};
+exports.loaderAnimation = loaderAnimation;
+var removeLoader = function removeLoader(container, elementToAdd, message, time) {
+    setTimeout(function () {
+        container.removeChild(elementToAdd);
+        container.innerHTML = message;
+    }, time);
+};
+exports.removeLoader = removeLoader;
 },{}],6:[function(require,module,exports) {
 "use strict";
 
@@ -160,6 +176,7 @@ var Chatbot = function () {
         this.input = (0, helpers_1.createElementWithClass)('input', 'chat__input--field');
         this.submitInput = (0, helpers_1.createElementWithClass)('button', 'chat__input--submit');
         this.chatBtn = (0, helpers_1.createElementWithClass)('button', 'chat__btn');
+        this.loader = (0, helpers_1.loaderAnimation)();
         this.chatContainer = (0, helpers_1.createElementWithManyClass)('div', ['chat__container', 'active']);
         this.chatQues = document.createElement('div');
         this.chatWindow = (0, helpers_1.createElementWithClass)('div', 'chat__window');
@@ -199,8 +216,9 @@ var Chatbot = function () {
             var findAnswer = this.quesOptions.indexOf(question);
             var botMessage = findAnswer === -1 ? 'I\'m sorry. Chose one of the folowing options: ' : this.quesReply[findAnswer];
             var chatBotMessage = createMessageElement('bot');
-            chatBotMessage.innerHTML = botMessage;
+            chatBotMessage.appendChild(this.loader);
             this.chatWindow.appendChild(chatBotMessage);
+            (0, helpers_1.removeLoader)(chatBotMessage, this.loader, botMessage, 3000);
             this.resetHeight();
         }
     }, {
@@ -232,8 +250,9 @@ var Chatbot = function () {
             var chatUserMessage = createMessageElement('user');
             var targetId = +e.target.id;
             chatUserMessage.innerHTML = e.target.innerHTML;
-            chatBotMessage.innerHTML = this.quesReply[targetId];
+            chatBotMessage.appendChild(this.loader);
             this.chatWindow.append(chatUserMessage, chatBotMessage);
+            (0, helpers_1.removeLoader)(chatBotMessage, this.loader, this.quesReply[targetId], 3000);
             this.resetHeight();
         }
     }, {

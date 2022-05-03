@@ -25,5 +25,21 @@ const setAttr = (element: HTMLElement, attributes: Record<string, any>, setConte
     if(setContent) element.innerHTML = setContent
   } 
 
+const loaderAnimation = () => {
+    
+   const loader = createElementWithClass('div', 'loader')
+   const spanElA = document.createElement('span')
+   const spanElB = document.createElement('span')
+   const spanElC = document.createElement('span')
+   addElemntsToContainer(loader, [spanElA,spanElB,spanElC])
+   return loader
+}
 
-export { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr }
+const removeLoader = (container: HTMLElement, elementToAdd: HTMLElement, message: string, time: number) => {
+    setTimeout(()=> {
+        container.removeChild(elementToAdd)
+        container.innerHTML = message
+      }, time)
+}
+
+export { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, loaderAnimation, removeLoader }

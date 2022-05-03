@@ -1,4 +1,4 @@
-import { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr } from './helpers'
+import { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, loaderAnimation, removeLoader } from './helpers'
 const body = document.querySelector<HTMLBodyElement>('.body')!
 
 // sendMessage
@@ -16,6 +16,7 @@ class Chatbot {
   chatWindow: HTMLElement
   quesOptions: string[]
   quesReply: string[]
+  loader: HTMLElement
 
 
   constructor(root: HTMLElement = document.body) {
@@ -23,7 +24,7 @@ class Chatbot {
     this.input = createElementWithClass('input', 'chat__input--field')
     this.submitInput = createElementWithClass('button', 'chat__input--submit')
     this.chatBtn = createElementWithClass('button', 'chat__btn')
-
+    this.loader = loaderAnimation()
     this.chatContainer = createElementWithManyClass('div', ['chat__container', 'active'])
     this.chatQues = document.createElement('div')
     this.chatWindow = createElementWithClass('div', 'chat__window')
@@ -46,9 +47,9 @@ class Chatbot {
     const chatInput = createElementWithClass('form', 'chat__input')
 
     this.chatBtn.innerHTML = 'Chat'
-  
-    setAttr(this.input, { type: 'text' , placeholder: 'Ask me question...?'})
-    setAttr(this.submitInput, {type: 'submit'}, '✔')
+
+    setAttr(this.input, { type: 'text', placeholder: 'Ask me question...?' })
+    setAttr(this.submitInput, { type: 'submit' }, '✔')
 
     //appending element
     this.root.appendChild(chatDiv)
@@ -61,9 +62,15 @@ class Chatbot {
   botAnswers(question: string) {
     const findAnswer = this.quesOptions.indexOf(question)
     const botMessage = findAnswer === -1 ? 'I\'m sorry. Chose one of the folowing options: ' : this.quesReply[findAnswer];
-    const chatBotMessage = createMessageElement('bot') 
-    chatBotMessage.innerHTML = botMessage
+    const chatBotMessage = createMessageElement('bot')
+
+
+
+    chatBotMessage.appendChild(this.loader)
     this.chatWindow.appendChild(chatBotMessage)
+
+    removeLoader(chatBotMessage, this.loader, botMessage, 3000)
+
     this.resetHeight()
   }
 
@@ -84,24 +91,26 @@ class Chatbot {
   }
 
   predominateOptionsHandler(e: any) {
-      const chatBotMessage = createMessageElement('bot')
-      const chatUserMessage = createMessageElement('user')
-      const targetId = +e.target.id
+    const chatBotMessage = createMessageElement('bot')
+    const chatUserMessage = createMessageElement('user')
+    const targetId = +e.target.id
 
-      chatUserMessage.innerHTML = e.target.innerHTML
-      chatBotMessage.innerHTML = this.quesReply[targetId]
-      this.chatWindow.append(chatUserMessage, chatBotMessage)
+    chatUserMessage.innerHTML = e.target.innerHTML
 
-      this.resetHeight()
+    chatBotMessage.appendChild(this.loader)
+    this.chatWindow.append(chatUserMessage, chatBotMessage)
+    removeLoader(chatBotMessage, this.loader, this.quesReply[targetId], 3000)
+
+
+    this.resetHeight()
   }
 
   chatEventsHandler() {
     this.submitInput.addEventListener('click', (e) => {
       const userQuestion = this.input.value
 
-      if(userQuestion.length < 4) return
+      if (userQuestion.length < 4) return
 
-      
       const chatUserMessage = createMessageElement('user')
       e.preventDefault()
       const userMessage = userQuestion
