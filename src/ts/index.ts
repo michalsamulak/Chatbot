@@ -11,7 +11,7 @@ class Chatbot {
   chatBtn: HTMLElement
   chatContainer: HTMLElement
   chatQuesBtn: any
-  chatQues: HTMLDivElement
+  chatQues: HTMLElement
   root: HTMLElement
   chatWindow: HTMLElement
   quesOptions: string[]
@@ -26,7 +26,7 @@ class Chatbot {
     this.chatBtn = createElementWithClass('button', 'chat__btn')
     this.loader = loaderAnimation()
     this.chatContainer = createElementWithManyClass('div', ['chat__container', 'active'])
-    this.chatQues = document.createElement('div')
+    this.chatQues = createElementWithClass('div', 'chat__ques')
     this.chatWindow = createElementWithClass('div', 'chat__window')
     this.quesOptions = ['Payment declined', 'Payment info', 'Unknown charge', 'Promotions and Deals']
     this.quesReply = ['I am very sorry your card has been declined', 'Your last paymant was $3.000', 'I will transfer you to... ', 'Are special deals for you...  ']
@@ -76,7 +76,7 @@ class Chatbot {
 
   botQueHandler() {
     this.quesOptions.forEach((option, i) => {
-      const chatQuesBtn = createElementWithClass('button', 'btnQue')
+      const chatQuesBtn = createElementWithClass('button', 'chat__ques-btn')
       chatQuesBtn.innerHTML = option
       
       chatQuesBtn.setAttribute('id', `${i}`)
@@ -87,8 +87,10 @@ class Chatbot {
 
   resetHeight() {
     this.chatWindow.removeChild(this.chatQues)
-    this.chatWindow.appendChild(this.chatQues)
-    this.chatWindow.scrollTo(0, this.chatWindow.scrollHeight)
+    setInterval(() => {
+      this.chatWindow.appendChild(this.chatQues)
+      this.chatWindow.scrollTo(0, this.chatWindow.scrollHeight)
+    }, 4000)
   }
 
   predominateOptionsHandler(e: any) {

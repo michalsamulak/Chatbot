@@ -2,7 +2,7 @@ $btn-color: #4d4ae8;
 $base-bg-color: #b4535348;
 $font-color: #fff;
 $chat-bg-color: #0872fe;
-$color-hover: rgb(128, 1, 1);
+
 $color-loader-1: rgba(0, 0, 0, 0.202);
 $color-loader-2:  rgb(200, 189, 189);
 *,
@@ -12,6 +12,26 @@ $color-loader-2:  rgb(200, 189, 189);
     padding: 0;
     box-sizing: border-box;
 }
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: $btn-color rgba(0, 0, 0, 0.347);
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.347);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: $btn-color;
+    border-radius: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.347);
+  }
 
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Mono&display=swap");
 
@@ -147,7 +167,7 @@ body {
             border-radius: 10px;
             padding: 5px;
             margin: 10px auto ;
-            font-size: 1rem;
+            font-size: 13px;
             cursor: pointer;
             background-color: $btn-color;
             border: 1px solid $btn-color;
@@ -155,14 +175,7 @@ body {
     }
 }
 
-.btnQue {
-    cursor: pointer;
 
-    &:hover {
-        color: $color-hover;
-        font-size: 15px;
-    }
-}
 
 .loader span {
     width: 10px;
@@ -193,3 +206,5 @@ body {
         background-color: $color-loader-2;
     }
 }
+
+

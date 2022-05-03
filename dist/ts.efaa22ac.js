@@ -178,7 +178,7 @@ var Chatbot = function () {
         this.chatBtn = (0, helpers_1.createElementWithClass)('button', 'chat__btn');
         this.loader = (0, helpers_1.loaderAnimation)();
         this.chatContainer = (0, helpers_1.createElementWithManyClass)('div', ['chat__container', 'active']);
-        this.chatQues = document.createElement('div');
+        this.chatQues = (0, helpers_1.createElementWithClass)('div', 'chat__ques');
         this.chatWindow = (0, helpers_1.createElementWithClass)('div', 'chat__window');
         this.quesOptions = ['Payment declined', 'Payment info', 'Unknown charge', 'Promotions and Deals'];
         this.quesReply = ['I am very sorry your card has been declined', 'Your last paymant was $3.000', 'I will transfer you to... ', 'Are special deals for you...  '];
@@ -227,7 +227,7 @@ var Chatbot = function () {
             var _this = this;
 
             this.quesOptions.forEach(function (option, i) {
-                var chatQuesBtn = (0, helpers_1.createElementWithClass)('button', 'btnQue');
+                var chatQuesBtn = (0, helpers_1.createElementWithClass)('button', 'chat__ques-btn');
                 chatQuesBtn.innerHTML = option;
                 chatQuesBtn.setAttribute('id', "" + i);
                 chatQuesBtn.addEventListener('click', function (e) {
@@ -239,9 +239,13 @@ var Chatbot = function () {
     }, {
         key: "resetHeight",
         value: function resetHeight() {
+            var _this2 = this;
+
             this.chatWindow.removeChild(this.chatQues);
-            this.chatWindow.appendChild(this.chatQues);
-            this.chatWindow.scrollTo(0, this.chatWindow.scrollHeight);
+            setInterval(function () {
+                _this2.chatWindow.appendChild(_this2.chatQues);
+                _this2.chatWindow.scrollTo(0, _this2.chatWindow.scrollHeight);
+            }, 4000);
         }
     }, {
         key: "predominateOptionsHandler",
@@ -258,25 +262,25 @@ var Chatbot = function () {
     }, {
         key: "chatEventsHandler",
         value: function chatEventsHandler() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.submitInput.addEventListener('click', function (e) {
-                var userQuestion = _this2.input.value;
+                var userQuestion = _this3.input.value;
                 if (userQuestion.length < 4) return;
                 var chatUserMessage = createMessageElement('user');
                 e.preventDefault();
                 var userMessage = userQuestion;
-                _this2.input.value = '';
+                _this3.input.value = '';
                 chatUserMessage.innerHTML = userMessage;
-                _this2.chatWindow.appendChild(chatUserMessage);
-                _this2.botAnswers(userMessage);
+                _this3.chatWindow.appendChild(chatUserMessage);
+                _this3.botAnswers(userMessage);
             });
             this.chatBtn.addEventListener('click', function () {
-                _this2.chatContainer.classList.toggle('active');
+                _this3.chatContainer.classList.toggle('active');
             });
             window.addEventListener('mouseup', function (e) {
                 if (e.target === body) {
-                    _this2.chatContainer.classList.remove('active');
+                    _this3.chatContainer.classList.remove('active');
                 }
             });
         }

@@ -6,6 +6,21 @@
   padding: 0;
   box-sizing: border-box; }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4d4ae8 rgba(0, 0, 0, 0.347); }
+
+*::-webkit-scrollbar {
+  width: 8px; }
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.347); }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4d4ae8;
+  border-radius: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.347); }
+
 body {
   background-color: #b4535348;
   display: flex;
@@ -105,16 +120,10 @@ body {
       border-radius: 10px;
       padding: 5px;
       margin: 10px auto;
-      font-size: 1rem;
+      font-size: 13px;
       cursor: pointer;
       background-color: #4d4ae8;
       border: 1px solid #4d4ae8; }
-
-.btnQue {
-  cursor: pointer; }
-  .btnQue:hover {
-    color: #800101;
-    font-size: 15px; }
 
 .loader span {
   width: 10px;
