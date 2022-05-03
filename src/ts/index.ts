@@ -76,8 +76,9 @@ class Chatbot {
 
   botQueHandler() {
     this.quesOptions.forEach((option, i) => {
-      const chatQuesBtn = document.createElement('button')
+      const chatQuesBtn = createElementWithClass('button', 'btnQue')
       chatQuesBtn.innerHTML = option
+      
       chatQuesBtn.setAttribute('id', `${i}`)
       chatQuesBtn.addEventListener('click', (e) => this.predominateOptionsHandler(e));
       this.chatQues.appendChild(chatQuesBtn)

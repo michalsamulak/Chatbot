@@ -110,6 +110,12 @@ body {
       background-color: #4d4ae8;
       border: 1px solid #4d4ae8; }
 
+.btnQue {
+  cursor: pointer; }
+  .btnQue:hover {
+    color: #800101;
+    font-size: 15px; }
+
 .loader span {
   width: 10px;
   height: 10px;

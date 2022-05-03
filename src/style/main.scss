@@ -2,7 +2,9 @@ $btn-color: #4d4ae8;
 $base-bg-color: #b4535348;
 $font-color: #fff;
 $chat-bg-color: #0872fe;
-
+$color-hover: rgb(128, 1, 1);
+$color-loader-1: rgba(0, 0, 0, 0.202);
+$color-loader-2:  rgb(200, 189, 189);
 *,
 *::before,
 *::after {
@@ -153,12 +155,20 @@ body {
     }
 }
 
+.btnQue {
+    cursor: pointer;
+
+    &:hover {
+        color: $color-hover;
+        font-size: 15px;
+    }
+}
 
 .loader span {
     width: 10px;
     height: 10px;
     margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.202);
+    background-color: $color-loader-1;
     border-radius: 50%;
     display: inline-block;
     animation-name: dots;
@@ -180,6 +190,6 @@ body {
     50% {
         opacity: 0;
         transform: scale(0.7) translateY(10px);
-        background-color: rgb(200, 189, 189);
+        background-color: $color-loader-2;
     }
 }

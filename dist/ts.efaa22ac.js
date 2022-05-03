@@ -227,7 +227,7 @@ var Chatbot = function () {
             var _this = this;
 
             this.quesOptions.forEach(function (option, i) {
-                var chatQuesBtn = document.createElement('button');
+                var chatQuesBtn = (0, helpers_1.createElementWithClass)('button', 'btnQue');
                 chatQuesBtn.innerHTML = option;
                 chatQuesBtn.setAttribute('id', "" + i);
                 chatQuesBtn.addEventListener('click', function (e) {
