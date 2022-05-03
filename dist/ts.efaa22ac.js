@@ -107,16 +107,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeLoader = exports.loaderAnimation = exports.setAttr = exports.addElemntsToContainer = exports.createElementWithManyClass = exports.createElementWithClass = void 0;
-var createElementWithClass = function createElementWithClass(elementType, classesName) {
+exports.removeLoader = exports.setLoader = exports.setAttr = exports.addElemntsToContainer = exports.createElementWithManyClass = exports.createElementWithClass = void 0;
+var createElementWithClass = function createElementWithClass(elementType, className) {
     var element = document.createElement(elementType);
-    element.classList.add(classesName);
+    element.classList.add(className);
     return element;
 };
 exports.createElementWithClass = createElementWithClass;
-var createElementWithManyClass = function createElementWithManyClass(elementType, classesName) {
+var createElementWithManyClass = function createElementWithManyClass(elementType, classNames) {
     var element = document.createElement(elementType);
-    classesName.forEach(function (classe) {
+    classNames.forEach(function (classe) {
         element.classList.add(classe);
     });
     return element;
@@ -128,14 +128,14 @@ var addElemntsToContainer = function addElemntsToContainer(container, elements) 
     });
 };
 exports.addElemntsToContainer = addElemntsToContainer;
-var setAttr = function setAttr(element, attributes, setContent) {
+var setAttr = function setAttr(element, attributes, attrContent) {
     Object.keys(attributes).forEach(function (attribut) {
         element.setAttribute(attribut, attributes[attribut]);
     });
-    if (setContent) element.innerHTML = setContent;
+    if (attrContent) element.innerHTML = attrContent;
 };
 exports.setAttr = setAttr;
-var loaderAnimation = function loaderAnimation() {
+var setLoader = function setLoader() {
     var loader = createElementWithClass('div', 'loader');
     var spanElA = document.createElement('span');
     var spanElB = document.createElement('span');
@@ -143,7 +143,7 @@ var loaderAnimation = function loaderAnimation() {
     addElemntsToContainer(loader, [spanElA, spanElB, spanElC]);
     return loader;
 };
-exports.loaderAnimation = loaderAnimation;
+exports.setLoader = setLoader;
 var removeLoader = function removeLoader(container, elementToAdd, message, time) {
     setTimeout(function () {
         container.removeChild(elementToAdd);
@@ -176,7 +176,7 @@ var Chatbot = function () {
         this.input = (0, helpers_1.createElementWithClass)('input', 'chat__input--field');
         this.submitInput = (0, helpers_1.createElementWithClass)('button', 'chat__input--submit');
         this.chatBtn = (0, helpers_1.createElementWithClass)('button', 'chat__btn');
-        this.loader = (0, helpers_1.loaderAnimation)();
+        this.loader = (0, helpers_1.setLoader)();
         this.chatContainer = (0, helpers_1.createElementWithManyClass)('div', ['chat__container', 'active']);
         this.chatQues = (0, helpers_1.createElementWithClass)('div', 'chat__ques');
         this.chatWindow = (0, helpers_1.createElementWithClass)('div', 'chat__window');

@@ -1,12 +1,12 @@
-const createElementWithClass = (elementType: string, classesName: string) => {
+const createElementWithClass = (elementType: string, className: string) => {
     const element = document.createElement(elementType)
-    element.classList.add(classesName)
+    element.classList.add(className)
     return element
 }
 
-const createElementWithManyClass = (elementType: string, classesName: string[]) => {
+const createElementWithManyClass = (elementType: string, classNames: string[]) => {
     const element = document.createElement(elementType)
-    classesName.forEach(classe => {
+    classNames.forEach(classe => {
         element.classList.add(classe)
     })
     return element
@@ -18,14 +18,14 @@ const addElemntsToContainer = <T>(container: any, elements: T[]) => {
     })
 }
 
-const setAttr = (element: HTMLElement, attributes: Record<string, any>, setContent?: string) => {
+const setAttr = (element: HTMLElement, attributes: Record<string, any>, attrContent?: string) => {
     Object.keys(attributes).forEach(attribut => {
       element.setAttribute(attribut, attributes[attribut])
     })
-    if(setContent) element.innerHTML = setContent
+    if(attrContent) element.innerHTML = attrContent
   } 
 
-const loaderAnimation = () => {
+const setLoader = () => {
     
    const loader = createElementWithClass('div', 'loader')
    const spanElA = document.createElement('span')
@@ -42,4 +42,4 @@ const removeLoader = (container: HTMLElement, elementToAdd: HTMLElement, message
       }, time)
 }
 
-export { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, loaderAnimation, removeLoader }
+export { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, setLoader, removeLoader }

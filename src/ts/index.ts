@@ -1,4 +1,4 @@
-import { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, loaderAnimation, removeLoader } from './helpers'
+import { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, setLoader, removeLoader } from './helpers'
 const body = document.querySelector<HTMLBodyElement>('.body')!
 
 // sendMessage
@@ -24,7 +24,7 @@ class Chatbot {
     this.input = createElementWithClass('input', 'chat__input--field')
     this.submitInput = createElementWithClass('button', 'chat__input--submit')
     this.chatBtn = createElementWithClass('button', 'chat__btn')
-    this.loader = loaderAnimation()
+    this.loader = setLoader()
     this.chatContainer = createElementWithManyClass('div', ['chat__container', 'active'])
     this.chatQues = createElementWithClass('div', 'chat__ques')
     this.chatWindow = createElementWithClass('div', 'chat__window')
