@@ -242,9 +242,11 @@ var Chatbot = function () {
             var _this2 = this;
 
             this.submitInput.addEventListener('click', function (e) {
+                var userQuestion = _this2.input.value;
+                if (userQuestion.length < 4) return;
                 var chatUserMessage = createMessageElement('user');
                 e.preventDefault();
-                var userMessage = _this2.input.value;
+                var userMessage = userQuestion;
                 _this2.input.value = '';
                 chatUserMessage.innerHTML = userMessage;
                 _this2.chatWindow.appendChild(chatUserMessage);

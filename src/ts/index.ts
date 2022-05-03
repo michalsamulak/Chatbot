@@ -97,9 +97,14 @@ class Chatbot {
 
   chatEventsHandler() {
     this.submitInput.addEventListener('click', (e) => {
+      const userQuestion = this.input.value
+
+      if(userQuestion.length < 4) return
+
+      
       const chatUserMessage = createMessageElement('user')
       e.preventDefault()
-      const userMessage = this.input.value
+      const userMessage = userQuestion
       this.input.value = ''
       chatUserMessage.innerHTML = userMessage
       this.chatWindow.appendChild(chatUserMessage)
