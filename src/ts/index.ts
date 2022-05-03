@@ -32,6 +32,9 @@ class Chatbot {
   }
 
   init() {
+    const welcome = createMessageElement('bot')
+    welcome.innerHTML = 'Welcome! Ask me a question so I can help you or chose one of the options:'
+    this.chatWindow.appendChild(welcome)
     this.createLayout()
     this.chatEventsHandler()
     this.botQueHandler()
