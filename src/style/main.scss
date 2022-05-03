@@ -125,10 +125,10 @@ body {
     &__input {
         position: relative;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
 
         &--field {
-            width: 100%;
+            width: 88%;
             border: none;
             border-radius: 5px;
             background-color: rgba(255, 255, 255, 0.654);
@@ -140,11 +140,13 @@ body {
             }
         }
         &--submit {
+            width: 30px;
+            height: 30px;
             font-size: 1rem;
             padding: 5px;
             border: none;
             border-radius: 50%;
-            margin-left: 5px;
+
             color: $btn-color;
             cursor: pointer;
 

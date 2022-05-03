@@ -90,9 +90,9 @@ body {
   .chat__input {
     position: relative;
     display: flex;
-    justify-content: center; }
+    justify-content: space-between; }
     .chat__input--field {
-      width: 100%;
+      width: 88%;
       border: none;
       border-radius: 5px;
       background-color: rgba(255, 255, 255, 0.654);
@@ -101,11 +101,12 @@ body {
       .chat__input--field:focus {
         background-color: #fff; }
     .chat__input--submit {
+      width: 30px;
+      height: 30px;
       font-size: 1rem;
       padding: 5px;
       border: none;
       border-radius: 50%;
-      margin-left: 5px;
       color: #4d4ae8;
       cursor: pointer; }
       .chat__input--submit:active {
