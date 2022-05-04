@@ -20,10 +20,17 @@ One of the difficulties during creating application were imitating human writing
 ## How to use it
 
 Download zip file and unpack it. 
-Use npm instal command to get all required dependencies.
+Use `npm install` command to get all required dependencies.
+```
+npm install
+```
 
-Import Chatbot class from index.ts file and initial class with "new Chatbot()" as the argument provide in what HTML element you whish to attached or as the default is body. use method init() to run chat. If you wish to provided options and replies use method setQues(options, replies) were options is array with predominated question and replyes is array with answers.
-
+Import Chatbot class from index.ts file and initial class with `new Chatbot()` as the argument provide in what HTML element you whish to attached or as the default is body. Use method `init()` to run chat. If you wish to provided options and replies use method `setQues(options, replyes)` were options is array with predominated question and replyes is array with answers.
+```
+const chat = new Chatbot()
+chat.init()
+chat.setQues(options, replyes)
+```
 I hope you enjoy this app
 
 ### I built this program thanks to knowledge what I learn from fundamentals at [Localhoste Academy](https://academy.localhost-group.com/)
