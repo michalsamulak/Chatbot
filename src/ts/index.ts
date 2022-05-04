@@ -102,7 +102,7 @@ class Chatbot {
 
   resetHeight() {
     this.chatWindow.removeChild(this.chatQues)
-    setInterval(() => {
+    setTimeout(() => {
       this.chatWindow.appendChild(this.chatQues)
       this.chatWindow.scrollTo(0, this.chatWindow.scrollHeight)
     }, 4000)

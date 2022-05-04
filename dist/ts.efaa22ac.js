@@ -252,7 +252,7 @@ var Chatbot = function () {
             var _this2 = this;
 
             this.chatWindow.removeChild(this.chatQues);
-            setInterval(function () {
+            setTimeout(function () {
                 _this2.chatWindow.appendChild(_this2.chatQues);
                 _this2.chatWindow.scrollTo(0, _this2.chatWindow.scrollHeight);
             }, 4000);
