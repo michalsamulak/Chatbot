@@ -195,18 +195,28 @@ var Chatbot = function () {
             this.botQueHandler();
         }
     }, {
+        key: "setQues",
+        value: function setQues(options, replyes) {
+            this.quesOptions = options;
+            this.quesReply = replyes;
+        }
+    }, {
         key: "createLayout",
         value: function createLayout() {
             // creating elements
             var chatDiv = (0, helpers_1.createElementWithClass)('div', 'chat');
             var chatInput = (0, helpers_1.createElementWithClass)('form', 'chat__input');
+            var chatHeader = (0, helpers_1.createElementWithClass)('div', 'chat__header');
+            // const chatImg = createElementWithClass('img', 'header__img') 
+            chatHeader.innerHTML = "Chat Assistant";
             this.chatBtn.innerHTML = 'Chat';
             (0, helpers_1.setAttr)(this.input, { type: 'text', placeholder: 'Ask me question...?' });
             (0, helpers_1.setAttr)(this.submitInput, { type: 'submit' }, '✔');
             //appending element
             this.root.appendChild(chatDiv);
+            // chatHeader.appendChild(chatImg)
             (0, helpers_1.addElemntsToContainer)(chatDiv, [this.chatBtn, this.chatContainer]);
-            (0, helpers_1.addElemntsToContainer)(this.chatContainer, [this.chatWindow, chatInput]);
+            (0, helpers_1.addElemntsToContainer)(this.chatContainer, [chatHeader, this.chatWindow, chatInput]);
             (0, helpers_1.addElemntsToContainer)(chatInput, [this.input, this.submitInput]);
             this.chatWindow.appendChild(this.chatQues);
         }
@@ -291,7 +301,7 @@ var Chatbot = function () {
 
 var chat = new Chatbot(body);
 chat.init();
-},{"./helpers":12}],19:[function(require,module,exports) {
+},{"./helpers":12}],7:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -320,7 +330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '1915' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '2596' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -461,5 +471,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[19,6], null)
+},{}]},{},[7,6], null)
 //# sourceMappingURL=/ts.efaa22ac.map

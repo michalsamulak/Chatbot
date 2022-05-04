@@ -1,3 +1,4 @@
+
 import { createElementWithClass, createElementWithManyClass, addElemntsToContainer, setAttr, setLoader, removeLoader } from './helpers'
 const body = document.querySelector<HTMLBodyElement>('.body')!
 
@@ -41,10 +42,22 @@ class Chatbot {
     this.botQueHandler()
   }
 
+  setQues(options: string[], replyes: string[]) {
+    this.quesOptions = options;
+    this.quesReply = replyes;
+  }
+
   createLayout() {
     // creating elements
     const chatDiv = createElementWithClass('div', 'chat')
     const chatInput = createElementWithClass('form', 'chat__input')
+    const chatHeader = createElementWithClass('div', 'chat__header')
+    // const chatImg = createElementWithClass('img', 'header__img') 
+
+  
+    chatHeader.innerHTML = "Chat Assistant"
+         
+
 
     this.chatBtn.innerHTML = 'Chat'
 
@@ -53,10 +66,12 @@ class Chatbot {
 
     //appending element
     this.root.appendChild(chatDiv)
+    // chatHeader.appendChild(chatImg)
     addElemntsToContainer(chatDiv, [this.chatBtn, this.chatContainer])
-    addElemntsToContainer(this.chatContainer, [this.chatWindow, chatInput])
+    addElemntsToContainer(this.chatContainer, [chatHeader, this.chatWindow, chatInput])
     addElemntsToContainer(chatInput, [this.input, this.submitInput])
     this.chatWindow.appendChild(this.chatQues)
+    
   }
 
   botAnswers(question: string) {
