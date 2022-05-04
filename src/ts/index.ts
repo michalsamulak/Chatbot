@@ -150,5 +150,7 @@ class Chatbot {
   }
 }
 
+export default Chatbot
+
 const chat = new Chatbot(body)
 chat.init()

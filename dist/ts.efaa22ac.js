@@ -299,6 +299,7 @@ var Chatbot = function () {
     return Chatbot;
 }();
 
+exports.default = Chatbot;
 var chat = new Chatbot(body);
 chat.init();
 },{"./helpers":12}],7:[function(require,module,exports) {
