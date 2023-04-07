@@ -76,7 +76,7 @@ class Chatbot {
 
   botAnswers(question: string) {
     const findAnswer = this.quesOptions.indexOf(question)
-    const botMessage = findAnswer === -1 ? 'I\'m sorry. Chose one of the folowing options: ' : this.quesReply[findAnswer];
+    const botMessage = findAnswer === -1 ? 'I\'m sorry. Chose one of the following options: ' : this.quesReply[findAnswer];
     const chatBotMessage = createMessageElement('bot')
 
 
